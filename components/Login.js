@@ -4,10 +4,26 @@ import { StyleSheet, Text, View,   TextInput,
   Button,
   TouchableOpacity } from "react-native";
 
-const Login = () => {
+const Login = ({ navigation}) => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const handleLoginValidate = () => {
+    const credentials = {
+      email,
+      password
+    }
+    if(!email || !password){
+      for(const key in credentials){
+        if(credentials[key] === '' || credentials[key] === undefined){
+          alert(`Please input ${key} to continue`);
+          return
+        }
+      }
+    }
+    navigation.navigate('Profile')
+    // handleShowNextPage();
+  }
   return (
     <View style={styles.container}>
     <StatusBar style="auto" />
@@ -36,7 +52,7 @@ const Login = () => {
       <Text style={styles.forgot_button}>Forgot Password?</Text>
     </TouchableOpacity>
 
-    <TouchableOpacity style={styles.loginBtn}>
+    <TouchableOpacity style={styles.loginBtn} onPress={handleLoginValidate}>
       <Text>LOGIN</Text>
     </TouchableOpacity>
   </View>
