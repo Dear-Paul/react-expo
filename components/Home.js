@@ -5,7 +5,7 @@ import { StyleSheet, View, Text } from 'react-native';
      
   return (
     <View style={styles.container}>
-        <Text>Home Page!</Text>
+        <Text>Home Page</Text>
       <StatusBar style="auto" />
     </View>
   );
